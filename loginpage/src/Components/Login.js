@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Styles/form.css";
 
-function Login() {
+  function Login() {
 
     const history =useNavigate();
     const [email,setEmail] =useState('')
     const [password, setPassword] = useState('')
 
-    async function submit(e){
+     async function submit(e){
         e.preventDefault();
 
         try{
-           await axios.post("http://localhost:8000/",{
+             await axios.post("http://localhost:8000/login",{
             email,password
            }) 
            .then(res=>{
-            if(res.data == "exist"){
-                history("/home",{state:{id:email}})
+            if(res.data.status == true){
+                history('/home')
             }
-             else if(res.data == "notexist"){
+             else if(res.data.status == false){
                 alert("User have not Signin")
             }
             })

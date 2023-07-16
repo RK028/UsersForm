@@ -91,13 +91,41 @@ form .signup-link a:hover{
 .table{
     border-spacing: 0px;
     width: 100%;
+    font-size: smaller;
+    font-weight:400;
 }
 .table td, .table th{
     padding: .75rem;
-    vertical-align: top;
+    vertical-align:top;
     text-align: center;
     border-top: 1px solid black;
 }
 .table tr:hover{
-    background-color: #16a085;
+    background-color: #7c8583;
 }
+.B{
+    height: 20px;
+    width:17px ;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+} 
+.BT{
+    height: 20px;
+    width:14px ;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+

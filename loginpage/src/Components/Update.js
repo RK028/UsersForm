@@ -1,25 +1,30 @@
 import React from "react";
 import { useState } from "react";
+import { useParams } from 'react-router-dom';
+
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import '../Styles/form.css';
 
 
-function Signin() {
+const  Update=(props) => {
+    const _id=useParams()
+    console.log(_id);
 
     const history =useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] =useState('')
     const [dob, setDOB] = useState('')
+    
 
      async function submit(e){
         e.preventDefault();
 
         try{
-             await axios.post("http://localhost:8000/signin",
-           {name,dob,email,password}
+             await axios.post("http://localhost:8000/update",
+           {name,dob,email,password,_id}
            ) 
            .then(res=>{
             if(res.data.status == false){
@@ -42,7 +47,7 @@ function Signin() {
   return (
     <div>
         <div className="container">
-            <div className="text">Registration</div>
+            <div className="text">UPDATE USER</div>
             <form action="POST">
                 <div className="data">
                     <label htmlFor="name">Full Name</label>
@@ -60,15 +65,8 @@ function Signin() {
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" id="password"  onChange={(e)=>{setPassword(e.target.value)}}/>
                 </div>
-                <div className="data">
-                    <label htmlFor="confirmpassword">Confirm Password</label>
-                    <input type="password" name="confirmpassword" id="confirmpassword" />
-                </div>
-                <div className="forgot-pass">
-                    <a href="#">Forgot Password?</a>
-                </div>
                 <div className="btn">
-                    <button type="submit" onClick={submit}>Register</button>
+                    <button type="submit" onClick={submit}>Update</button>
                 </div>
                 <div className="signup-link">
                 <div><Link to="/">Login IN</Link> </div>
@@ -79,4 +77,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Update;
